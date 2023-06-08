@@ -26,11 +26,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Utwórz i użyj nowego budowniczego Docker Buildx
-  	run: |
-    		echo '{"experimental": "enabled"}' | sudo tee /etc/docker/daemon.json > /dev/null
-    		sudo systemctl restart docker
-    		docker buildx create --use --name mybuilder --platform linux/amd64,linux/arm64 --driver docker-container
-
+        run: |
+          echo '{"experimental": "enabled"}' | sudo tee /etc/docker/daemon.json > /dev/null
+          sudo systemctl restart docker
+          docker buildx create --use --name mybuilder --platform linux/amd64,linux/arm64 --driver docker-container
 
       - name: Budowanie i przesyłanie wieloarchitekturowego obrazu Dockera
         uses: docker/build-push-action@v2
