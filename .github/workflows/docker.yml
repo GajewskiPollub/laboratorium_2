@@ -3,7 +3,7 @@ name: Budowanie Dockera
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   budowanie:
