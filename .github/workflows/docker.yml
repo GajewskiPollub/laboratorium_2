@@ -28,7 +28,7 @@ jobs:
       - name: Budowanie i przesyłanie obrazu Dockera dla amd64
         uses: docker/build-push-action@v4
         with:
-          context:
+          context: .
           push: true
           tags: gajewski/second_task_pg:linux-amd64
           platforms: linux/amd64
@@ -38,7 +38,7 @@ jobs:
       - name: Budowanie i przesyłanie obrazu Dockera dla arm64
         uses: docker/build-push-action@v4
         with:
-          context:
+          context: .
           push: true
           tags: gajewski/second_task_pg:linux-arm64
           platforms: linux/arm64
