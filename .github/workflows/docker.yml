@@ -25,15 +25,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Budowanie i przesyłanie wieloarchitekturowego obrazu Dockera
+      - name: Budowanie i przesyłanie obrazu Dockera dla amd64
         uses: docker/build-push-action@v4
         with:
           context:
           push: true
-          tags: |
-            gajewski/second_task_pg:latest
-            gajewski/second_task_pg:linux-amd64
-            gajewski/second_task_pg:linux-arm64
-          platforms: linux/amd64,linux/arm64
+          tags: gajewski/second_task_pg:linux-amd64
+          platforms: linux/amd64
+          builder: default
+          driver: docker-container
+
+      - name: Budowanie i przesyłanie obrazu Dockera dla arm64
+        uses: docker/build-push-action@v4
+        with:
+          context:
+          push: true
+          tags: gajewski/second_task_pg:linux-arm64
+          platforms: linux/arm64
           builder: default
           driver: docker-container
