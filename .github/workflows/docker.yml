@@ -36,4 +36,4 @@ jobs:
             gajewski/second_task_pg:linux-arm64
           platforms: linux/amd64,linux/arm64
           builder: default
-
+	  driver: docker-container
