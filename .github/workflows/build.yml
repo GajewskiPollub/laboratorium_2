@@ -1,0 +1,40 @@
+name: Budowanie obrazów kontenera
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Konfiguracja QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Konfiguracja Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Pobranie kodu źródłowego
+        uses: actions/checkout@v2
+
+      - name: Budowanie i wysyłanie obrazu ARM64
+        run: |
+          docker buildx build \
+            --platform linux/arm64/v8 \
+            --load \
+            -t gajewski/myapp:arm64 \
+            .
+
+          docker push gajewski/myapp:arm64
+
+      - name: Budowanie i wysyłanie obrazu AMD64
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            --load \
+            -t gajewski/myapp:amd64 \
+            .
+
+          docker push gajewski/myapp:amd64
