@@ -11,3 +11,5 @@ W katalogu .gitlab/workflows/ znajduje się plik opisujący łancuch Github Acti
 *Uruchomienie kontenera na porcie 8080 wraz z wyświetlniem pliku index.php<br>
 docker run ip 8080:8080 <nazwa obrazu> <br>
 ![](5.png)<br><br>
+*Ukazanie logów
+![](6.png)<br><br>
